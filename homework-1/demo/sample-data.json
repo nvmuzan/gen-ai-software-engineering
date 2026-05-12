@@ -1,0 +1,40 @@
+{
+  "description": "Sample transaction payloads for seeding/testing the Banking Transactions API",
+  "transactions": [
+    {
+      "fromAccount": "ACC-EXTRL",
+      "toAccount": "ACC-12345",
+      "amount": 1000.00,
+      "currency": "USD",
+      "type": "deposit"
+    },
+    {
+      "fromAccount": "ACC-EXTRL",
+      "toAccount": "ACC-67890",
+      "amount": 500.00,
+      "currency": "EUR",
+      "type": "deposit"
+    },
+    {
+      "fromAccount": "ACC-12345",
+      "toAccount": "ACC-67890",
+      "amount": 250.50,
+      "currency": "USD",
+      "type": "transfer"
+    },
+    {
+      "fromAccount": "ACC-67890",
+      "toAccount": "ACC-EXTRL",
+      "amount": 75.00,
+      "currency": "EUR",
+      "type": "withdrawal"
+    },
+    {
+      "fromAccount": "ACC-ABCDE",
+      "toAccount": "ACC-12345",
+      "amount": 320.99,
+      "currency": "GBP",
+      "type": "transfer"
+    }
+  ]
+}
