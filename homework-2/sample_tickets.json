@@ -1,0 +1,469 @@
+[
+  {
+    "id": "de6f9ea0-1d67-429c-bf70-c7c970bdbfef",
+    "customer_id": "CUST-1001",
+    "customer_email": "user1@example.com",
+    "customer_name": "User 1",
+    "subject": "Please add dark mode",
+    "description": "Please add the ability to export data to CSV. This would greatly improve our workflow.",
+    "category": "feature_request",
+    "priority": "urgent",
+    "status": "new",
+    "created_at": "2026-05-05T13:20:22.777214",
+    "updated_at": "2026-04-26T13:20:22.777214",
+    "resolved_at": null,
+    "assigned_to": "agent1",
+    "tags": [
+      "vip",
+      "ux"
+    ],
+    "metadata": {
+      "source": "phone",
+      "browser": "Chrome",
+      "device_type": "desktop"
+    }
+  },
+  {
+    "id": "72d21ecd-c4be-4b32-a07f-647c7c76f21f",
+    "customer_id": "CUST-1002",
+    "customer_email": "user2@example.com",
+    "customer_name": "User 2",
+    "subject": "Incorrect charge on my account",
+    "description": "Could you explain why my plan price increased without any notification?",
+    "category": "billing_question",
+    "priority": "low",
+    "status": "resolved",
+    "created_at": "2026-03-19T13:20:22.777214",
+    "updated_at": "2026-04-21T13:20:22.777214",
+    "resolved_at": null,
+    "assigned_to": "agent2",
+    "tags": [],
+    "metadata": {
+      "source": "chat",
+      "browser": "Chrome",
+      "device_type": "desktop"
+    }
+  },
+  {
+    "id": "169abcbe-4ad3-45e4-b5b6-2b9d063f2eb5",
+    "customer_id": "CUST-1003",
+    "customer_email": "user3@example.com",
+    "customer_name": "User 3",
+    "subject": "Can't login to my account",
+    "description": "I cannot log into my account. I've tried resetting the password but the reset email never arrives.",
+    "category": "account_access",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2026-05-18T13:20:22.777214",
+    "updated_at": "2026-04-23T13:20:22.777214",
+    "resolved_at": null,
+    "assigned_to": "agent2",
+    "tags": [
+      "vip"
+    ],
+    "metadata": {
+      "source": "web_form",
+      "browser": "Firefox",
+      "device_type": "mobile"
+    }
+  },
+  {
+    "id": "2ac22edb-8e65-4b13-a1dd-56d4752a70b0",
+    "customer_id": "CUST-1004",
+    "customer_email": "user4@example.com",
+    "customer_name": "User 4",
+    "subject": "Partnership inquiry",
+    "description": "I have a general question about your terms of service regarding data retention.",
+    "category": "other",
+    "priority": "urgent",
+    "status": "waiting_customer",
+    "created_at": "2026-03-04T13:20:22.777214",
+    "updated_at": "2026-05-09T13:20:22.777214",
+    "resolved_at": null,
+    "assigned_to": null,
+    "tags": [
+      "urgent",
+      "bug",
+      "ux"
+    ],
+    "metadata": {
+      "source": "chat",
+      "browser": "Safari",
+      "device_type": "mobile"
+    }
+  },
+  {
+    "id": "28d9e152-09c0-473e-9220-cdfe603cca51",
+    "customer_id": "CUST-1005",
+    "customer_email": "user5@example.com",
+    "customer_name": "User 5",
+    "subject": "Getting 500 error",
+    "description": "The page loads very slowly \u2014 it takes over 30 seconds which is completely unusable.",
+    "category": "technical_issue",
+    "priority": "medium",
+    "status": "waiting_customer",
+    "created_at": "2026-02-21T13:20:22.777214",
+    "updated_at": "2026-05-06T13:20:22.777214",
+    "resolved_at": null,
+    "assigned_to": "agent1",
+    "tags": [
+      "bug",
+      "urgent"
+    ],
+    "metadata": {
+      "source": "chat",
+      "browser": "Safari",
+      "device_type": "tablet"
+    }
+  },
+  {
+    "id": "80680f71-3e1e-4c24-a380-5151834f1e6f",
+    "customer_id": "CUST-1006",
+    "customer_email": "user6@example.com",
+    "customer_name": "User 6",
+    "subject": "Invoice not received",
+    "description": "I was charged twice this month for my subscription. Please refund the duplicate charge.",
+    "category": "billing_question",
+    "priority": "medium",
+    "status": "new",
+    "created_at": "2026-04-30T13:20:22.777214",
+    "updated_at": "2026-05-06T13:20:22.777214",
+    "resolved_at": null,
+    "assigned_to": null,
+    "tags": [
+      "vip",
+      "urgent",
+      "billing"
+    ],
+    "metadata": {
+      "source": "email",
+      "browser": "Safari",
+      "device_type": "mobile"
+    }
+  },
+  {
+    "id": "b07ba317-ff9e-4e0c-93a3-8c6f4fc143bf",
+    "customer_id": "CUST-1007",
+    "customer_email": "user7@example.com",
+    "customer_name": "User 7",
+    "subject": "Refund request",
+    "description": "I haven't received my invoice for last month. I need it for accounting purposes.",
+    "category": "billing_question",
+    "priority": "high",
+    "status": "in_progress",
+    "created_at": "2026-03-15T13:20:22.777214",
+    "updated_at": "2026-04-29T13:20:22.777214",
+    "resolved_at": null,
+    "assigned_to": null,
+    "tags": [],
+    "metadata": {
+      "source": "api",
+      "browser": null,
+      "device_type": "tablet"
+    }
+  },
+  {
+    "id": "c5c87757-8937-4a3c-9598-98deb624f866",
+    "customer_id": "CUST-1008",
+    "customer_email": "user8@example.com",
+    "customer_name": "User 8",
+    "subject": "Partnership inquiry",
+    "description": "I'm interested in exploring a partnership opportunity with your team.",
+    "category": "other",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2026-02-27T13:20:22.777214",
+    "updated_at": "2026-04-29T13:20:22.777214",
+    "resolved_at": null,
+    "assigned_to": null,
+    "tags": [
+      "ux",
+      "vip"
+    ],
+    "metadata": {
+      "source": "web_form",
+      "browser": null,
+      "device_type": "desktop"
+    }
+  },
+  {
+    "id": "04831892-b3f9-4740-8543-cb08caed2da5",
+    "customer_id": "CUST-1009",
+    "customer_email": "user9@example.com",
+    "customer_name": "User 9",
+    "subject": "Incorrect charge on my account",
+    "description": "Could you explain why my plan price increased without any notification?",
+    "category": "billing_question",
+    "priority": "low",
+    "status": "waiting_customer",
+    "created_at": "2026-04-16T13:20:22.777214",
+    "updated_at": "2026-05-02T13:20:22.777214",
+    "resolved_at": null,
+    "assigned_to": "agent2",
+    "tags": [
+      "bug",
+      "billing"
+    ],
+    "metadata": {
+      "source": "chat",
+      "browser": "Firefox",
+      "device_type": "mobile"
+    }
+  },
+  {
+    "id": "9cad841d-e26f-4a73-a5ac-f68c5253cb0e",
+    "customer_id": "CUST-1010",
+    "customer_email": "user10@example.com",
+    "customer_name": "User 10",
+    "subject": "Account locked",
+    "description": "My account seems to be locked. I get 'access denied' every time I try to sign in.",
+    "category": "account_access",
+    "priority": "medium",
+    "status": "in_progress",
+    "created_at": "2026-03-12T13:20:22.777214",
+    "updated_at": "2026-04-20T13:20:22.777214",
+    "resolved_at": null,
+    "assigned_to": "agent2",
+    "tags": [
+      "urgent",
+      "ux",
+      "vip"
+    ],
+    "metadata": {
+      "source": "web_form",
+      "browser": "Firefox",
+      "device_type": "mobile"
+    }
+  },
+  {
+    "id": "10dc7bcd-fb44-4db8-9ad6-d7837e621d3b",
+    "customer_id": "CUST-1011",
+    "customer_email": "user11@example.com",
+    "customer_name": "User 11",
+    "subject": "Incorrect charge on my account",
+    "description": "I was charged twice this month for my subscription. Please refund the duplicate charge.",
+    "category": "billing_question",
+    "priority": "high",
+    "status": "new",
+    "created_at": "2026-04-20T13:20:22.777214",
+    "updated_at": "2026-04-20T13:20:22.777214",
+    "resolved_at": null,
+    "assigned_to": "agent3",
+    "tags": [
+      "ux",
+      "billing"
+    ],
+    "metadata": {
+      "source": "email",
+      "browser": "Chrome",
+      "device_type": "mobile"
+    }
+  },
+  {
+    "id": "64c07e8e-8da6-4718-9fdc-90e5c789de06",
+    "customer_id": "CUST-1012",
+    "customer_email": "user12@example.com",
+    "customer_name": "User 12",
+    "subject": "App crashes on startup",
+    "description": "I'm getting a 500 Internal Server Error when submitting the contact form.",
+    "category": "technical_issue",
+    "priority": "high",
+    "status": "resolved",
+    "created_at": "2026-03-20T13:20:22.777214",
+    "updated_at": "2026-04-30T13:20:22.777214",
+    "resolved_at": null,
+    "assigned_to": "agent2",
+    "tags": [],
+    "metadata": {
+      "source": "api",
+      "browser": "Firefox",
+      "device_type": "desktop"
+    }
+  },
+  {
+    "id": "06bffc71-57c7-4168-9d45-e31ea197fe91",
+    "customer_id": "CUST-1013",
+    "customer_email": "user13@example.com",
+    "customer_name": "User 13",
+    "subject": "Incorrect charge on my account",
+    "description": "I was charged twice this month for my subscription. Please refund the duplicate charge.",
+    "category": "billing_question",
+    "priority": "high",
+    "status": "resolved",
+    "created_at": "2026-05-06T13:20:22.777214",
+    "updated_at": "2026-05-18T13:20:22.777214",
+    "resolved_at": null,
+    "assigned_to": "agent1",
+    "tags": [
+      "urgent"
+    ],
+    "metadata": {
+      "source": "api",
+      "browser": "Firefox",
+      "device_type": "mobile"
+    }
+  },
+  {
+    "id": "4bd718ca-cd32-4af0-ae55-55d9387228d1",
+    "customer_id": "CUST-1014",
+    "customer_email": "user14@example.com",
+    "customer_name": "User 14",
+    "subject": "Stack trace attached",
+    "description": "After the v2.3 update the search functionality stopped working. This is a clear regression.",
+    "category": "bug_report",
+    "priority": "urgent",
+    "status": "waiting_customer",
+    "created_at": "2026-03-26T13:20:22.777214",
+    "updated_at": "2026-04-24T13:20:22.777214",
+    "resolved_at": null,
+    "assigned_to": null,
+    "tags": [
+      "billing",
+      "vip"
+    ],
+    "metadata": {
+      "source": "chat",
+      "browser": "Firefox",
+      "device_type": "mobile"
+    }
+  },
+  {
+    "id": "e7000b92-3497-4d1f-9f60-ecd5fcb0b19a",
+    "customer_id": "CUST-1015",
+    "customer_email": "user15@example.com",
+    "customer_name": "User 15",
+    "subject": "Can't login to my account",
+    "description": "Two-factor authentication stopped working after I got a new phone.",
+    "category": "account_access",
+    "priority": "urgent",
+    "status": "new",
+    "created_at": "2026-04-04T13:20:22.777214",
+    "updated_at": "2026-04-28T13:20:22.777214",
+    "resolved_at": null,
+    "assigned_to": "agent3",
+    "tags": [
+      "urgent",
+      "vip"
+    ],
+    "metadata": {
+      "source": "web_form",
+      "browser": "Edge",
+      "device_type": "mobile"
+    }
+  },
+  {
+    "id": "8120ac76-4a30-423c-83c0-add20b3f4bd9",
+    "customer_id": "CUST-1016",
+    "customer_email": "user16@example.com",
+    "customer_name": "User 16",
+    "subject": "Regression in v2.3",
+    "description": "Steps to reproduce: 1) Open settings 2) Click Save 3) Error appears. Expected: settings saved. Actual: error 400.",
+    "category": "bug_report",
+    "priority": "medium",
+    "status": "in_progress",
+    "created_at": "2026-02-23T13:20:22.777214",
+    "updated_at": "2026-04-30T13:20:22.777214",
+    "resolved_at": null,
+    "assigned_to": "agent3",
+    "tags": [],
+    "metadata": {
+      "source": "chat",
+      "browser": "Chrome",
+      "device_type": "tablet"
+    }
+  },
+  {
+    "id": "6b6fdb4b-ee5f-46d5-925c-34a012dd4805",
+    "customer_id": "CUST-1017",
+    "customer_email": "user17@example.com",
+    "customer_name": "User 17",
+    "subject": "Account locked",
+    "description": "I cannot log into my account. I've tried resetting the password but the reset email never arrives.",
+    "category": "account_access",
+    "priority": "low",
+    "status": "in_progress",
+    "created_at": "2026-03-22T13:20:22.777214",
+    "updated_at": "2026-05-19T13:20:22.777214",
+    "resolved_at": null,
+    "assigned_to": "agent3",
+    "tags": [
+      "urgent",
+      "vip",
+      "api"
+    ],
+    "metadata": {
+      "source": "chat",
+      "browser": "Chrome",
+      "device_type": "tablet"
+    }
+  },
+  {
+    "id": "eeccd89f-d50c-4cfb-a516-9820a270cf55",
+    "customer_id": "CUST-1018",
+    "customer_email": "user18@example.com",
+    "customer_name": "User 18",
+    "subject": "Stack trace attached",
+    "description": "Steps to reproduce: 1) Open settings 2) Click Save 3) Error appears. Expected: settings saved. Actual: error 400.",
+    "category": "bug_report",
+    "priority": "low",
+    "status": "in_progress",
+    "created_at": "2026-05-05T13:20:22.777214",
+    "updated_at": "2026-05-13T13:20:22.777214",
+    "resolved_at": null,
+    "assigned_to": "agent2",
+    "tags": [
+      "api",
+      "billing"
+    ],
+    "metadata": {
+      "source": "web_form",
+      "browser": "Chrome",
+      "device_type": "mobile"
+    }
+  },
+  {
+    "id": "7b66ac1d-d96e-4798-aa77-df2bfe97cff5",
+    "customer_id": "CUST-1019",
+    "customer_email": "user19@example.com",
+    "customer_name": "User 19",
+    "subject": "Page not loading",
+    "description": "The page loads very slowly \u2014 it takes over 30 seconds which is completely unusable.",
+    "category": "technical_issue",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2026-02-28T13:20:22.777214",
+    "updated_at": "2026-05-11T13:20:22.777214",
+    "resolved_at": null,
+    "assigned_to": null,
+    "tags": [],
+    "metadata": {
+      "source": "chat",
+      "browser": "Chrome",
+      "device_type": "tablet"
+    }
+  },
+  {
+    "id": "db627cc9-cb40-48bf-af7b-20a36d962264",
+    "customer_id": "CUST-1020",
+    "customer_email": "user20@example.com",
+    "customer_name": "User 20",
+    "subject": "Refund request",
+    "description": "Could you explain why my plan price increased without any notification?",
+    "category": "billing_question",
+    "priority": "high",
+    "status": "in_progress",
+    "created_at": "2026-04-22T13:20:22.777214",
+    "updated_at": "2026-05-02T13:20:22.777214",
+    "resolved_at": null,
+    "assigned_to": "agent1",
+    "tags": [
+      "api",
+      "ux"
+    ],
+    "metadata": {
+      "source": "web_form",
+      "browser": null,
+      "device_type": "tablet"
+    }
+  }
+]
