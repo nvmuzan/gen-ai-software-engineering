@@ -1,33 +1,23 @@
-# Homework 2: Intelligent Customer Support System
+# Customer Support Ticket System
 
-> **Student Name**: Vladyslav Nahirnych
-> **Date Submitted**: 2026-05-19
-> **AI Tools Used**: Claude Code (claude-sonnet-4-6)
+A REST API for managing customer support tickets with automatic categorisation and priority assignment.
 
----
+## Features
 
-## Project Overview
-
-A FastAPI-based REST API for customer support ticket management. The system supports:
-
-- Full CRUD for tickets with Pydantic validation
-- Bulk import from CSV, JSON, and XML files
-- Rule-based automatic categorisation and priority assignment
-- Filtering tickets by category, priority, status, assignee
-- 57 tests achieving **97% code coverage**
-
----
+- Full CRUD for tickets
+- Bulk import from CSV, JSON, and XML
+- Rule-based auto-classification (category + priority)
+- Filtering by category, priority, status, assignee
+- 97% test coverage across 57 tests
 
 ## Architecture
 
 ```mermaid
 graph TD
-    Client -->|HTTP| API[FastAPI App - main.py]
-    API --> Models[Pydantic Models - models.py]
-    API --> Storage[In-Memory Store - storage.py]
-    API --> Classifier[Keyword Classifier - classifier.py]
-    API --> Importers[CSV/JSON/XML Parsers - importers.py]
-    Importers --> Models
+    Client -->|HTTP| API[FastAPI App]
+    API --> Storage[In-Memory Storage]
+    API --> Classifier[Rule-Based Classifier]
+    API --> Importers[CSV / JSON / XML Parsers]
     Importers --> Storage
     Classifier --> Storage
 ```
@@ -37,11 +27,11 @@ graph TD
 ```
 homework-2/
 ├── src/
-│   ├── main.py          # FastAPI app and routes
+│   ├── main.py          # FastAPI app and all route handlers
 │   ├── models.py        # Pydantic models and enums
 │   ├── storage.py       # In-memory ticket store
-│   ├── classifier.py    # Auto-classification logic
-│   ├── importers.py     # CSV/JSON/XML parsers
+│   ├── classifier.py    # Keyword-based auto-classification
+│   ├── importers.py     # CSV/JSON/XML file parsers
 │   └── requirements.txt
 ├── tests/
 │   ├── conftest.py
@@ -54,6 +44,7 @@ homework-2/
 │   ├── test_integration.py      (5 tests)
 │   └── test_performance.py      (5 tests)
 ├── docs/
+│   ├── README.md
 │   ├── API_REFERENCE.md
 │   ├── ARCHITECTURE.md
 │   └── TESTING_GUIDE.md
@@ -63,7 +54,7 @@ homework-2/
 └── pytest.ini
 ```
 
-## Setup & Installation
+## Setup
 
 ```bash
 cd homework-2/src
@@ -77,7 +68,7 @@ cd homework-2/src
 uvicorn main:app --reload --port 8000
 ```
 
-Interactive Swagger UI: `http://localhost:8000/docs`
+Interactive docs available at `http://localhost:8000/docs`.
 
 ## Run Tests
 
@@ -92,7 +83,3 @@ python -m pytest tests/ --cov=src --cov-config=pytest.ini --cov-report=term-miss
 cd homework-2/src
 python generate_samples.py
 ```
-
----
-
-*This project was completed as part of the AI-Assisted Development course.*

@@ -1,0 +1,2 @@
+customer_id,customer_email,subject
+BAD,not-email,too short
