@@ -44,13 +44,12 @@ def get_all_transactions():
 
 
 def search_transactions(keyword):
-    """SEC-001: SQL injection — keyword interpolated directly into query."""
     conn = get_connection()
-    query = (
-        f"SELECT id, amount, category, description, created_at "
-        f"FROM transactions WHERE description LIKE '%{keyword}%'"
+    cursor = conn.execute(
+        "SELECT id, amount, category, description, created_at "
+        "FROM transactions WHERE description LIKE ?",
+        (f"%{keyword}%",)
     )
-    cursor = conn.execute(query)
     rows = cursor.fetchall()
     conn.close()
     return rows

@@ -1,15 +1,17 @@
 def calculate_balance(transactions):
-    """Calculate total balance. BUG-002: skips first transaction."""
+    """Calculate total balance."""
     total = 0.0
-    for t in transactions[1:]:  # BUG-002: off-by-one, skips transactions[0]
+    for t in transactions:
         total += t[1]
     return total
 
 
 def average_spending(transactions):
-    """Calculate average transaction amount. BUG-001: division by zero."""
+    """Calculate average transaction amount."""
+    if not transactions:
+        return 0.0
     total = sum(t[1] for t in transactions)
-    return total / len(transactions)  # BUG-001: ZeroDivisionError when empty
+    return total / len(transactions)
 
 
 def total_by_category(transactions):
