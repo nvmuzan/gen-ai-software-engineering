@@ -1,0 +1,32 @@
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      }
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "C:\\Users\\NahirychVladyslav\\Documents\\Antigravity\\gen-ai-software-engineering\\homework-5"
+      ]
+    },
+    "notion": {
+      "command": "npx",
+      "args": ["-y", "@notionhq/notion-mcp-server"],
+      "env": {
+        "OPENAPI_MCP_HEADERS": "{\"Authorization\": \"Bearer ${NOTION_API_KEY}\", \"Notion-Version\": \"2022-06-28\"}"
+      }
+    },
+    "custom-lorem": {
+      "command": "python",
+      "args": [
+        "C:\\Users\\NahirychVladyslav\\Documents\\Antigravity\\gen-ai-software-engineering\\homework-5\\custom-mcp-server\\server.py"
+      ]
+    }
+  }
+}
