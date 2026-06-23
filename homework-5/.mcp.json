@@ -23,7 +23,7 @@
       }
     },
     "custom-lorem": {
-      "command": "python",
+      "command": "C:\\Users\\NahirychVladyslav\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\cdpv-delta-pull-oQWgAKeY-py3.11\\Scripts\\python.exe",
       "args": [
         "C:\\Users\\NahirychVladyslav\\Documents\\Antigravity\\gen-ai-software-engineering\\homework-5\\custom-mcp-server\\server.py"
       ]
