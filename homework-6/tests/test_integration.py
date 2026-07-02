@@ -25,3 +25,11 @@ def test_high_value_flagged(tmp_path):
     by_id = {r["transaction_id"]: r for r in summary["results"]}
     assert by_id["TXN005"]["status"] in ("settled",)
     assert by_id["TXN005"]["flagged"] is True
+
+def test_no_orphaned_files_after_run(tmp_path):
+    run_pipeline(tmp_path, _txns())
+    for stage in ("input", "processing", "output"):
+        assert list((tmp_path / stage).glob("*.json")) == []
+    results = [f for f in (tmp_path / "results").glob("*.json")
+               if f.name != "pipeline_summary.json"]
+    assert len(results) == 8
