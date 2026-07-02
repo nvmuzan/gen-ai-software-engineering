@@ -32,18 +32,14 @@ def run_pipeline(root: Path, transactions: list[dict]) -> dict:
         for name, agent in PIPELINE:
             bus.move(current, stage, "processing")
             out = agent.process_message(current)
-            if out["target_agent"] == "results":
-                bus.move(current, "processing", "output")
-                bus.write("results", out)
-                current = out
-                stage = "results"
-                break
-            bus.move(current, "processing", "output")
+            # the just-processed message is consumed; remove it from processing/
+            (bus.stage_dir("processing") / f"{current['message_id']}.json").unlink(missing_ok=True)
+            target = "results" if out["target_agent"] == "results" else "output"
+            bus.write(target, out)
             current = out
-            stage = "output"
-            bus.write("output", current)
-        else:
-            bus.write("results", current)
+            stage = target
+            if target == "results":
+                break
         results.append(current["data"])
     summary = _summarize(results)
     (root / "results" / "pipeline_summary.json").write_text(
