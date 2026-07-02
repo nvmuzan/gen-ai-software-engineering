@@ -58,12 +58,12 @@ def build_server():
 
     mcp = FastMCP("pipeline-status")
 
-    @mcp.tool()
+    @mcp.tool(name="get_transaction_status")
     def get_transaction_status_tool(transaction_id: str) -> dict | None:
         """Return current status of a transaction from shared/results/."""
         return get_transaction_status(transaction_id)
 
-    @mcp.tool()
+    @mcp.tool(name="list_pipeline_results")
     def list_pipeline_results_tool() -> dict:
         """Return a summary of all processed transactions."""
         return list_pipeline_results()
