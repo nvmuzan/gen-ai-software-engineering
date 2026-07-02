@@ -38,7 +38,7 @@ class FraudDetector(Agent):
     def process_message(self, message: dict) -> dict:
         score, reasons = self.score(message["data"])
         level = "high" if score >= 70 else "medium" if score >= 40 else "low"
-        status = Status.FLAGGED.value if score >= 70 else message["data"].get("status", Status.VALIDATED.value)
+        status = Status.FLAGGED.value if score >= 40 else message["data"].get("status", Status.VALIDATED.value)
         return self.advance(message, "compliance_checker", {
             "risk_score": score, "risk_level": level,
             "fraud_reasons": reasons, "status": status,
