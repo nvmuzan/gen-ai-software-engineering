@@ -33,3 +33,10 @@ def test_no_orphaned_files_after_run(tmp_path):
     results = [f for f in (tmp_path / "results").glob("*.json")
                if f.name != "pipeline_summary.json"]
     assert len(results) == 8
+
+def test_audit_log_written_and_pii_masked(tmp_path):
+    run_pipeline(tmp_path, _txns())
+    audit = (tmp_path / "results" / "audit.log").read_text(encoding="utf-8")
+    assert audit.count("\n") >= 8            # at least one line per transaction
+    assert "ACC-****" in audit               # masked accounts present
+    assert "ACC-1001" not in audit           # no unmasked account leaks

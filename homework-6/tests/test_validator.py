@@ -30,3 +30,9 @@ def test_missing_field_rejected():
     m = make_message("i", "transaction_validator", {"transaction_id": "T", "amount": "1.00"})
     out = TransactionValidator().process_message(m)
     assert out["data"]["status"] == Status.REJECTED.value
+
+def test_non_finite_amount_rejected():
+    out = TransactionValidator().process_message(_msg(amount="NaN"))
+    assert out["data"]["status"] == Status.REJECTED.value
+    out2 = TransactionValidator().process_message(_msg(amount="Infinity"))
+    assert out2["data"]["status"] == Status.REJECTED.value

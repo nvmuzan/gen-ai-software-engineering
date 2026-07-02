@@ -2,10 +2,12 @@ from agents.base import Agent, mask_account
 from models import make_message, Status
 
 def test_mask_account():
-    assert mask_account("ACC-1001") == "ACC-****1001"[:8] or mask_account("ACC-1001").startswith("ACC-")
-    assert "1001" not in mask_account("ACC-1001")[:-4] or True
     m = mask_account("ACC-1001")
     assert m.startswith("ACC-") and m.endswith("1001") and "*" in m
+    assert m != "ACC-1001"
+    m2 = mask_account("ACC-987654321")
+    assert m2 == "ACC-****4321"
+    assert "98765" not in m2
 
 def test_reject_sets_status_and_reason():
     agent = Agent("tester")

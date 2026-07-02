@@ -28,6 +28,8 @@ class TransactionValidator(Agent):
             amount = to_decimal(data["amount"])
         except (InvalidOperation, ValueError):
             return "amount is not a valid decimal"
+        if not amount.is_finite():
+            return "amount must be a finite number"
         if amount <= Decimal("0"):
             return "amount must be positive"
         if amount.as_tuple().exponent < -2:

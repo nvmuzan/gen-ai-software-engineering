@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from agents.base import mask_account
 from agents.compliance_checker import ComplianceChecker
 from agents.fraud_detector import FraudDetector
 from agents.settlement_processor import SettlementProcessor
@@ -24,18 +25,26 @@ def run_pipeline(root: Path, transactions: list[dict]) -> dict:
     bus.setup()
     bus.clear()
     results = []
+    audit_lines = []
     for txn in transactions:
         msg = make_message("integrator", "transaction_validator", dict(txn))
         bus.write("input", msg)
         current = msg
         stage = "input"
+        masked_src = mask_account(txn.get("source_account", ""))
         for name, agent in PIPELINE:
             bus.move(current, stage, "processing")
-            out = agent.process_message(current)
+            try:
+                out = agent.process_message(current)
+            except Exception as exc:  # defensive: one bad transaction must not abort the batch
+                out = agent.reject(current, f"processing error: {exc}")
             # the just-processed message is consumed; remove it from processing/
             (bus.stage_dir("processing") / f"{current['message_id']}.json").unlink(missing_ok=True)
             target = "results" if out["target_agent"] == "results" else "output"
             bus.write(target, out)
+            txn_id = out["data"].get("transaction_id", "?")
+            outcome = out["data"].get("status", "?")
+            audit_lines.append(agent.audit(txn_id, f"{masked_src} -> {outcome}"))
             current = out
             stage = target
             if target == "results":
@@ -44,6 +53,8 @@ def run_pipeline(root: Path, transactions: list[dict]) -> dict:
     summary = _summarize(results)
     (root / "results" / "pipeline_summary.json").write_text(
         json.dumps(summary, indent=2), encoding="utf-8")
+    (root / "results" / "audit.log").write_text(
+        "\n".join(audit_lines) + "\n", encoding="utf-8")
     return summary
 
 
