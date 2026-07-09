@@ -94,7 +94,13 @@ This specification package was produced in an AI-assisted session (Claude Code /
 
 The agent takes the task from `TASKS.md`, plans it as a todo list (explore context → ask clarifying questions → write `specification.md` / `agents.md` / editor rules / `README.md` → run a self-review), then runs an explicit **self-review** confirming there are no `TBD`/placeholder gaps, the state machine is consistent across files, the 500 ms SLO is used uniformly, and the GDPR ↔ PCI DSS retention conflict is documented. This is the "several levels / traceable" structure being assembled under agent guidance.
 
-### 2. Result — the layered specification
+### 2. Agent reasoning — traceability & consistency audit
+
+![Claude auditing the spec against the .claude working rules: goal→task traceability and edge-case coverage](docs/screenshots/screen3.png)
+
+Claude re-reads `specification.md` against the working rules in `.claude/virtual-card-rules.md` (plan→verify) and the domain contract in `agents.md`: it traces each of the 16 low-level tasks back to a mid-level objective, confirms the state machine and the GDPR ↔ PCI DSS retention resolution stay consistent across all three files, and flags the three design-time risks (concurrent-freeze race, `limit=0` vs `FROZEN`, tokenizer failure) that the rules guard *before* any code is written. This is the `.claude` rules and `agents.md` contract being applied, not just stored.
+
+### 3. Result — the layered specification
 
 ![Resulting specification.md: low-level tasks, edge-case table, and per-MO verification](docs/screenshots/screen1.png)
 
