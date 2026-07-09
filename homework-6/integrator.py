@@ -1,0 +1,87 @@
+"""Orchestrator: loads transactions and runs them through all agents."""
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+from agents.base import mask_account
+from agents.compliance_checker import ComplianceChecker
+from agents.fraud_detector import FraudDetector
+from agents.settlement_processor import SettlementProcessor
+from agents.transaction_validator import TransactionValidator
+from models import Status, make_message
+from shared_bus import SharedBus
+
+PIPELINE = [
+    ("transaction_validator", TransactionValidator()),
+    ("fraud_detector", FraudDetector()),
+    ("compliance_checker", ComplianceChecker()),
+    ("settlement_processor", SettlementProcessor()),
+]
+
+
+def run_pipeline(root: Path, transactions: list[dict]) -> dict:
+    bus = SharedBus(root)
+    bus.setup()
+    bus.clear()
+    results = []
+    audit_lines = []
+    for txn in transactions:
+        msg = make_message("integrator", "transaction_validator", dict(txn))
+        bus.write("input", msg)
+        current = msg
+        stage = "input"
+        masked_src = mask_account(txn.get("source_account", ""))
+        for name, agent in PIPELINE:
+            bus.move(current, stage, "processing")
+            try:
+                out = agent.process_message(current)
+            except Exception as exc:  # defensive: one bad transaction must not abort the batch
+                out = agent.reject(current, f"processing error: {exc}")
+            # the just-processed message is consumed; remove it from processing/
+            (bus.stage_dir("processing") / f"{current['message_id']}.json").unlink(missing_ok=True)
+            target = "results" if out["target_agent"] == "results" else "output"
+            bus.write(target, out)
+            txn_id = out["data"].get("transaction_id", "?")
+            outcome = out["data"].get("status", "?")
+            audit_lines.append(agent.audit(txn_id, f"{masked_src} -> {outcome}"))
+            current = out
+            stage = target
+            if target == "results":
+                break
+        results.append(current["data"])
+    summary = _summarize(results)
+    (root / "results" / "pipeline_summary.json").write_text(
+        json.dumps(summary, indent=2), encoding="utf-8")
+    (root / "results" / "audit.log").write_text(
+        "\n".join(audit_lines) + "\n", encoding="utf-8")
+    return summary
+
+
+def _summarize(results: list[dict]) -> dict:
+    return {
+        "total": len(results),
+        "settled": sum(1 for r in results if r.get("status") == Status.SETTLED.value),
+        "rejected": sum(1 for r in results if r.get("status") == Status.REJECTED.value),
+        "flagged": sum(1 for r in results if r.get("flagged")),
+        "results": results,
+    }
+
+
+def main() -> int:
+    root = Path(__file__).resolve().parent / "shared"
+    src = Path(__file__).resolve().parent / "sample-transactions.json"
+    txns = json.loads(src.read_text(encoding="utf-8"))
+    summary = run_pipeline(root, txns)
+    print(f"Processed {summary['total']} | settled={summary['settled']} "
+          f"rejected={summary['rejected']} flagged={summary['flagged']}")
+    print(f"{'TXN':<10}{'STATUS':<12}{'RISK':<8}NOTE")
+    for r in summary["results"]:
+        note = r.get("reason", "") or ("FLAGGED" if r.get("flagged") else "")
+        print(f"{r['transaction_id']:<10}{r.get('status',''):<12}"
+              f"{str(r.get('risk_level','-')):<8}{note}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
